@@ -1,0 +1,52 @@
+{
+    "names": {
+        "description": "触发匹配的名字列表，消息以「名字+关键词」开头时触发LLM调用",
+        "type": "list",
+        "hint": "配置多个名字，如 [\"akt\", \"小明\", \"AI助手\"]",
+        "default": [
+            "akt"
+        ]
+    },
+    "trigger_keywords": {
+        "description": "触发关键词列表，用于拼接在名字之后形成完整前缀",
+        "type": "list",
+        "hint": "支持多个判断句式关键词，如 [\"认为\", \"觉得\", \"说\", \"回答\"]",
+        "default": [
+            "认为",
+            "觉得",
+            "说",
+            "回答"
+        ]
+    },
+    "llm_provider_id": {
+        "description": "用于调用问答的 LLM 服务提供商 ID（留空则使用当前会话默认提供商）",
+        "type": "string",
+        "hint": "在 AstrBot 管理面板的提供商设置中可查看 ID",
+        "default": "",
+        "_special": "select_provider"
+    },
+    "system_prompt": {
+        "description": "发送给 LLM 的系统提示词，定义 AI 的角色和行为",
+        "type": "text",
+        "hint": "自定义系统提示词来控制 LLM 回复风格",
+        "default": "你是一位犀利果断的AI。回答规则：只给确定结论，禁止使用「可能」「大概」「也许」「不确定」等模糊词；不解释原因、不列举依据、不说「超出范围」；必须且只能输出一句话，禁止分点分段换行。直接给出答案，比如问「明天抽卡会歪吗」就答「明天抽卡不会歪」。宁可错得具体，不可对得模糊。"
+    },
+    "fallback_message": {
+        "description": "当 LLM 服务不可用时返回的降级提示信息",
+        "type": "string",
+        "hint": "LLM 调用失败时向用户展示的友好提示",
+        "default": "抱歉，AI 服务暂时无法响应，请稍后再试~"
+    },
+    "enable_fuzzy_match": {
+        "description": "是否启用模糊匹配（忽略名字大小写和前后空格）",
+        "type": "bool",
+        "hint": "开启后 \"Akt认为\" 和 \"akt认为\" 都能匹配",
+        "default": true
+    },
+    "max_question_length": {
+        "description": "问题的最大长度限制（字符数），超出将截断并提示",
+        "type": "int",
+        "hint": "防止过长消息导致 LLM 调用异常或费用过高",
+        "default": 200
+    }
+}

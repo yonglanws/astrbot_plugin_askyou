@@ -1,0 +1,6 @@
+name: astrbot_plugin_askyou
+display_name: 问答插件 (askyou)
+desc: 基于模式匹配的 AI 问答插件，支持自定义名字列表和触发关键词
+version: 1.0.0
+author: 慵懒午睡
+repo: https://github.com/yonglanws/astrbot_plugin_askyou
